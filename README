@@ -1,0 +1,8 @@
+Projeto cada de Leilões 
+
+Projeto de uma empresa de casa de leilões onde as funcionalidades são cadastrar produtos com Nome e Valor, listagem de produtos em uma tabela com ID, Nome, Valor e Status, e classes com intuito
+de conectar com banco de dados SQL, criar um ArrayList "ProdutosDTO" e criar métodos get e set para inserir e capturar valores de produtos, como o Nome, Valor, Status e ID.
+A empresa deseja utilizar um sistema informatizado em suas rotinas. Criando versionamentos em repositórios local com Git Bash e transferindo para repositórios remoto no GitHub.
+
+
+As tecnologias utilizadas é Java e MySQL.
