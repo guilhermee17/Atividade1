@@ -18,8 +18,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
     public cadastroVIEW() {
         initComponents();
     }
-
+   
     listagemVIEW listagem = new listagemVIEW(); 
+    int cont = 0;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,7 +151,11 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+      
+        
+        ProdutosDAO produtodao = new ProdutosDAO();
        
+     
         ProdutosDTO produto = new ProdutosDTO();
         String ID = id.getText();
         String nome = cadastroNome.getText();
@@ -160,7 +165,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setValor(Integer.parseInt(valor));
         produto.setStatus(status);
         
-        ProdutosDAO produtodao = new ProdutosDAO();
+        
         produtodao.cadastrarProduto(produto);
         
         conectaDAO i = new conectaDAO();
@@ -195,13 +200,15 @@ public class cadastroVIEW extends javax.swing.JFrame {
         tableModel.addRow(dados);
         
         
-
+        
+        
+        
         
         }catch(SQLException sqle){
             System.out.println("Erro ao inserir produto: " + sqle.getMessage());
         }
         
-        
+       
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
