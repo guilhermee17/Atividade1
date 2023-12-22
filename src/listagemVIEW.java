@@ -21,7 +21,7 @@ public class listagemVIEW extends javax.swing.JFrame {
        
         
    }
-    
+    Vendas instanciaVendas = new  Vendas();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -130,14 +130,16 @@ public class listagemVIEW extends javax.swing.JFrame {
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         ProdutosDAO instancia = new ProdutosDAO();
         instancia.comparação = campo.getText();
+        instancia.teste = instanciaVendas;
         instancia.venderProdutos();
-        
+        instancia.listarProdutosVendidos();
 
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-        //vendasVIEW vendas = new vendasVIEW(); 
-        //vendas.setVisible(true);
+        instanciaVendas.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
