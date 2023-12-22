@@ -131,6 +131,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         ProdutosDAO instancia = new ProdutosDAO();
         instancia.comparação = campo.getText();
         instancia.venderProdutos();
+        
 
     }//GEN-LAST:event_btnVenderActionPerformed
 

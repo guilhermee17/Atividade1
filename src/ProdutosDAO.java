@@ -56,6 +56,9 @@ public class ProdutosDAO {
             System.out.println("Erro ao inserir produto: " + sqle.getMessage());
         }
     }
+  
+    
+
 
         
 }
