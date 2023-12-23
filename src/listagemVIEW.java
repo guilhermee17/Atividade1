@@ -1,10 +1,6 @@
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,14 +13,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class listagemVIEW extends javax.swing.JFrame {
 
-    @SuppressWarnings("unchecked")
+    
     
    public listagemVIEW(){
        initComponents();
         
         
    }
-    
+    Vendas instanciaVendas = new  Vendas();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -119,17 +115,18 @@ public class listagemVIEW extends javax.swing.JFrame {
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
         ProdutosDAO instancia = new ProdutosDAO();
-        instancia.compração = campo.getText();
+        instancia.comparação = campo.getText();
+        instancia.teste = instanciaVendas;
         instancia.venderProdutos();
-        
-        
-        
-              
-    
+        instancia.listarProdutosVendidos();
+
     }//GEN-LAST:event_btnVenderActionPerformed
 
     private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
-     
+        instanciaVendas.setVisible(true);
+        dispose();
+
+
     }//GEN-LAST:event_btnVendasActionPerformed
 
     /**
@@ -151,7 +148,10 @@ public class listagemVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVendas;
     private javax.swing.JButton btnVender;
-    public javax.swing.JTextPane campo;
+
+    
+    private javax.swing.JTextPane campo;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -162,25 +162,6 @@ public class listagemVIEW extends javax.swing.JFrame {
   
     ProdutosDAO produtosdao = new ProdutosDAO();
     ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
-    private void listarProdutos(ArrayList<ProdutosDTO> listagem1){
-        try {
-            
-            
-            DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
-            model.setNumRows(0);
-            
-           
-            
-            for(int i = 0; i < listagem.size(); i++){
-                model.addRow(new Object[]{
-                    listagem.get(i).getId(),
-                    listagem.get(i).getNome(),
-                    listagem.get(i).getValor(),
-                    listagem.get(i).getStatus()
-                });
-            }
-        } catch (Exception e) {
-        }
     
     }
-}
+

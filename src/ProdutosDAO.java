@@ -10,11 +10,11 @@
 
 import java.sql.PreparedStatement;
 import java.sql.Connection;
-import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+
 
 
 public class ProdutosDAO {
@@ -23,9 +23,10 @@ public class ProdutosDAO {
     PreparedStatement prep;
     ResultSet resultset;
     ArrayList<ProdutosDTO> listagem = new ArrayList<>();
-    String compração;
-    
-    
+
+    String comparação;
+    Vendas teste = new Vendas();
+
     public void cadastrarProduto (ProdutosDTO produto){
         
         
@@ -39,8 +40,12 @@ public class ProdutosDAO {
         return listagem;
     }
     
+   
+
+   
+    
     public void venderProdutos(){
-        listagemVIEW l = new listagemVIEW();
+       
         
        
         conectaDAO i = new conectaDAO();
@@ -48,19 +53,44 @@ public class ProdutosDAO {
         try{
         String update = "update produtos set status = 'Vendido' where id = ?";
         PreparedStatement ps = conn.prepareStatement(update);
-        ps.setString(1, compração);
+        ps.setString(1, comparação);
         
          ps.executeUpdate();
         System.out.println("Produto atualizado com sucesso");
         
-          }catch(SQLException sqle){
+          }catch(SQLException sqle ){
             System.out.println("Erro ao inserir produto: " + sqle.getMessage());
         }
     }
+  
+    public void listarProdutosVendidos(){
+        conectaDAO i = new conectaDAO();
+        Connection conn = i.connectDB();
+        
+        DefaultTableModel tableModel = (DefaultTableModel)teste.tabela.getModel();
+        
+        try{
+        String listar = "select * from produtos where id = ?";
+        PreparedStatement ps = conn.prepareStatement(listar);
+        ps.setString(1, comparação);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+          int id = rs.getInt("id"); 
+          String nome = rs.getString("nome");
+          int valor = rs.getInt("valor");
+          String status = rs.getString("status");
+          
+          Object[] dados = {id, nome, valor, status};
+        tableModel.addRow(dados);  
+        }
+        }catch(SQLException sqle){
+            System.out.println("Erro ao inserir produto: " + sqle.getMessage());
+        }
+      
+}
 
-   
-    
-    
+
+
         
 }
 
